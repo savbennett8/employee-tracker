@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 
 //Connect to database
 const db = mysql.createConnection(
@@ -53,7 +54,7 @@ inquirer.prompt([
 ]).then(answers => {
     switch (answers) {
         case 'View all departments':
-            viewDepartments(answers);
+            console.log(options.value);
             break;
 
         case 'View all roles':
@@ -84,26 +85,12 @@ inquirer.prompt([
 
     }
 });
-//     if (answers === 'View all departments') {
-//         viewDepartments();
-//     } else if (answers === 'View all roles') {
-//         // viewRoles();
-//     } else if (answers === 'View all employees') {
-//         // viewEmployees();
-//     } else if (answers === 'Add a department') {
-//         addDepartment();
-//     } else if (answers === 'Add a role') {
-//         // addRole();
-//     } else if (answers === 'Add an employee') {
-//         // addEmployee();
-//     } else if (answers === 'Update an employee') {
-//         // updateEmployee();
-//     }
-// });
 
 function viewDepartments(table) {
     //show table of departments
-    console.log(table);
+    console.table([
+        `SELECT * FROM departments`
+    ]);
 };
 
 function addDepartment() {

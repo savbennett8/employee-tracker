@@ -1,13 +1,13 @@
 CREATE TABLE departments (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    department_name VARCHAR(30) NOT NULL
+    department_name VARCHAR(30) NOT NULL UNIQUE
 );
 
 CREATE TABLE roles (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     job_title VARCHAR(30) NOT NULL,
-    department_name VARCHAR(30) NOT NULL,
-    salary INTEGER
+    salary DECIMAL,
+    department_id INTEGER REFERENCES departments(id)
 );
 
 CREATE TABLE employees (
@@ -15,7 +15,6 @@ CREATE TABLE employees (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     job_title VARCHAR(30) NOT NULL,
-    department_name VARCHAR(30) NOT NULL,
-    salary INTEGER,
-    manager VARCHAR(30)
+    role_id INTEGER REFERENCES roles(id),
+    manager_name VARCHAR(30)
 );
