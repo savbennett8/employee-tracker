@@ -5,22 +5,22 @@ VALUES
 ('Finance'),
 ('Legal');
 
-INSERT INTO roles (job_title, department_name, salary)
+INSERT INTO roles (job_title, salary, department_id)
 VALUES 
-('Sales Lead', 'Sales', 100000),
-('Salesperson', 'Sales', 10000),
-('Lead Engineer', 'Engineering', 150000),
-('Software Engineer', 'Engineering', 120000),
-('Accountant', 'Finance', 125000),
-('Legal Team Lead', 'Legal', 250000),
-('Lawyer', 'Legal', 150000);
+('Sales Lead', 100000, 1),
+('Salesperson', 10000, 1),
+('Lead Engineer', 150000, 2),
+('Software Engineer', 120000, 2),
+('Accountant', 125000, 3),
+('Legal Team Lead', 250000, 4),
+('Lawyer', 150000, 4);
 
-INSERT INTO employees (first_name, last_name, job_title, department_name, salary, manager)
+INSERT INTO employees (first_name, last_name, job_title, role_id, manager_name)
 VALUES 
-('John', 'Doe', 'Sales Lead', 'Sales', 100000, 'Ashley Rodriguez'),
-('Mark', 'Hathaway', 'Salesperson', 'Sales', 10000, 'Ashley Rodriguez'),
-('Sarah', 'Blue', 'Lead Engineer', 'Engineering', 150000, null),
-('Tegan', 'Atkins', 'Software Engineer', 'Engineering', 120000, 'Sarah Blue'),
-('Rich', 'Knutz', 'Accountant', 'Finance', 125000, null),
-('Louis', 'Dunn', 'Legal Team Lead', 'Legal', 250000, 'Don Joe'),
-('Kristen', 'Barnes', 'Lawyer', 'Legal', 150000, 'Don Joe');
+('John', 'Doe', 'Sales Lead', 1, 'Ashley Rodriguez'),
+('Mark', 'Hathaway', 'Salesperson', 2, 'Ashley Rodriguez'),
+('Sarah', 'Blue', 'Lead Engineer', 3, null),
+('Tegan', 'Atkins', 'Software Engineer', 4, 'Sarah Blue'),
+('Rich', 'Knutz', 'Accountant', 5, null),
+('Louis', 'Dunn', 'Legal Team Lead', 6, 'Don Joe'),
+('Kristen', 'Barnes', 'Lawyer', 7, 'Don Joe');

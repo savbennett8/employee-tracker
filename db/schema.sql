@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS employees;
+
 CREATE TABLE departments (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     department_name VARCHAR(30) NOT NULL UNIQUE
@@ -6,8 +10,8 @@ CREATE TABLE departments (
 CREATE TABLE roles (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     job_title VARCHAR(30) NOT NULL,
-    salary DECIMAL,
-    department_id INTEGER REFERENCES departments(id)
+    salary DECIMAL (10,2) NOT NULL,
+    department_id INTEGER NOT NULL
 );
 
 CREATE TABLE employees (
@@ -15,6 +19,6 @@ CREATE TABLE employees (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     job_title VARCHAR(30) NOT NULL,
-    role_id INTEGER REFERENCES roles(id),
+    role_id INTEGER,
     manager_name VARCHAR(30)
 );

@@ -5,12 +5,12 @@
 As a business owner you can view and manage the departments, roles, and employees in your company so that you can organize and plan your business.
 
 ## Table of Contents
-* [Installation](link)
-* [Usage](link)
-* [License](link)
-* [Contributing](link)
-* [Tests](link)
-* [Questions](link)
+* [Installation](https://github.com/savbennett8/employee-tracker/tree/main#installation)
+* [Usage](https://github.com/savbennett8/employee-tracker/tree/main#usage)
+* [License](https://github.com/savbennett8/employee-tracker/tree/main#license)
+* [Contributing](https://github.com/savbennett8/employee-tracker/tree/main#contributing)
+* [Tests](https://github.com/savbennett8/employee-tracker/tree/main#tests)
+* [Questions](https://github.com/savbennett8/employee-tracker/tree/main#questions)
 
 ## Installation
 This application runs from the command line and uses Node, Inquirer, MySQL. Install the appropriate packages to use here:
