@@ -53,7 +53,15 @@ function prompts() {
                 break;
 
             case 'Update an employees manager':
-                updateEmployeeManager();
+                db.query(
+                    `SELECT first_name, last_name, id FROM employees`,
+                    function (err, results) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        updateEmployeeManager(results);
+                    }
+                )
                 break;
 
             default: process.exit();
@@ -220,32 +228,40 @@ function addEmployee() {
     });
 };
 
-function updateEmployeeManager() {
+function updateEmployeeManager(employees) {
     //inquirer prompt asking which employee to update
+    const employeeNames = employees.map((employee) => {
+        return employee.first_name + ' ' + employee.last_name;
+    })
     inquirer.prompt([
         {
             type: 'list',
-            name: 'employee_list',
+            name: 'employee',
             message: 'Select the employee you would like to update:',
-            choices: [
-                db.query(
-                    `SELECT first_name FROM employees`
-                )
-            ]
+            choices: employeeNames
+        },
+        {
+            type: 'list',
+            name: 'manager',
+            message: 'Select the manager to assign to the selected employee:',
+            choices: employeeNames
         }
-    ]).then(selectedEmployee => {
-        //inquirer prompt asking which manager to assign
-        inquirer.prompt([
-            {
-                type: 'list',
-                name: 'manager_list',
-                message: 'Select the manager to assign to the selected employee:',
-                choices: ['Ashley Rodriguez', 'Sarah Blue', 'Rich Knutz', 'Don Joe']
+    ]).then(({ employee, manager }) => {
+        console.log(employee, manager);
+        //somehow update employee with new manager in employees table
+        const selectedEmployee = employees.find(e => employee === e.first_name + ' ' + e.last_name);
+        const selectedManager = employees.find(m => manager === m.first_name + ' ' + m.last_name);
+
+        db.query(
+            `UPDATE employees SET manager_id = ? WHERE id = ?`,
+            [selectedManager.id, selectedEmployee.id],
+            function (err, results) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('Done');
+                prompts();
             }
-        ]).then(selectedManager => {
-            //somehow update employee with new manager in employees table
-        })
+        )
     })
-
-
 }
