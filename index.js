@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 
@@ -14,6 +14,8 @@ const db = mysql.createConnection(
     },
     console.log('Connected to the employee_tracker database.')
 );
+
+db.connect();
 
 //original prompt questions asking what the user wants to do
 function prompts() {
@@ -136,7 +138,7 @@ function addRole() {
         {
             type: 'input',
             name: 'title',
-            messsage: 'What is the role title?'
+            message: 'What is the role title?'
         },
         {
             type: 'input',
@@ -175,7 +177,7 @@ function addEmployee() {
     inquirer.prompt([
         {
             type: 'input',
-            messsage: 'Enter employee first name:',
+            message: 'Enter employee first name:',
             name: 'first_name'
         },
         {
