@@ -14,9 +14,9 @@ As a business owner you can view and manage the departments, roles, and employee
 
 ## Installation
 This application runs from the command line and uses Node, Inquirer, MySQL. Install the appropriate packages to use here:
-[Node](https://nodejs.org/en/)
-[Inquirer](https://www.npmjs.com/package/inquirer)
-[MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
+<br> [Node](https://nodejs.org/en/)
+<br> [Inquirer](https://www.npmjs.com/package/inquirer)
+<br> [MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
 
 ## Usage
 Run "node index" from the command line and answer the prompts. 
